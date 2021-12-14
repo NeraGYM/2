@@ -1,0 +1,79 @@
+//아두이노2에는 보행자용 신호 추가 연결. 보행1~3 까지 빨강, 녹색 총 6개 연결.
+int red_h1=13;
+int green_h1=11;
+int red_h2=10;
+int green_h2=8;
+int red_h3=7;
+int green_h3=5;
+
+void direction_1_green(void)//1번의 녹색 불이 켜짐.
+{
+  digitalWrite(red_h1,LOW);
+  digitalWrite(green_h1,HIGH);
+  digitalWrite(red_h2,HIGH);
+  digitalWrite(green_h2,LOW);
+  digitalWrite(red_h3,HIGH);
+  digitalWrite(green_h3,LOW);
+}
+
+
+void direction_2_green(void)//2번의 녹색 불이 켜짐.
+{
+  digitalWrite(red_h1,HIGH);
+  digitalWrite(green_h1,LOW);
+  digitalWrite(red_h2,LOW);
+  digitalWrite(green_h2,HIGH);
+  digitalWrite(red_h3,HIGH);
+  digitalWrite(green_h3,LOW);
+}
+
+
+void direction_3_green(void)//3번의 녹색 불이 켜짐.
+{
+  digitalWrite(red_h1,HIGH);
+  digitalWrite(green_h1,LOW);
+  digitalWrite(red_h2,HIGH);
+  digitalWrite(green_h2,LOW);
+  digitalWrite(red_h3,LOW);
+  digitalWrite(green_h3,HIGH);
+}
+
+void direction_4_red(void)//빨간불 대기.
+{
+  digitalWrite(red_h1,HIGH);
+  digitalWrite(green_h1,LOW);
+  digitalWrite(red_h2,HIGH);
+  digitalWrite(green_h2,LOW);
+  digitalWrite(red_h3,HIGH);
+  digitalWrite(green_h3,LOW);
+}
+
+void setup()
+{
+//모든 led를 출력으로 선언. 
+  
+  for(int i=5;i<=13;i++)
+    pinMode(i,OUTPUT);
+  
+}
+
+void loop() //루프하는동안 트래픽 흐름을 제어하기위해 신호 하나를 제어함.
+
+{
+  direction_1_green(); // 녹불 딜레이 13초
+  delay(13000);
+
+  
+  direction_2_green(); // 녹불 딜레이 13초
+  delay(13000);
+
+  
+  direction_3_green();// 녹불 딜레이 13초
+  delay(13000);
+
+  
+  direction_4_red(); // 3개 모두 빨간불 10초
+  delay(10000);
+  
+}
+  
